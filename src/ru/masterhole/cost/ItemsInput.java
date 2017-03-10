@@ -321,15 +321,16 @@ public class ItemsInput {
         comboBoxInput.get("Грунтовка").addItem("Да");
         comboBoxInput.get("Грунтовка").setSelectedIndex(0);
 
+        // меню выбора цвета
         comboBoxInput.put("Цвет", new JComboBox());
-        comboBoxInput.get("Цвет").addItem("Глянцевый белый");
-        comboBoxInput.get("Цвет").addItem("Глянцевый цветной");
-        comboBoxInput.get("Цвет").addItem("Матовый белый");
-        comboBoxInput.get("Цвет").addItem("Матовый цветной");
-        comboBoxInput.get("Цвет").addItem("Антик");
-        comboBoxInput.get("Цвет").addItem("Металлик");
-        comboBoxInput.get("Цвет").addItem("Хром");
-        comboBoxInput.get("Цвет").addItem("Золото");
+        comboBoxInput.get("Цвет").addItem(Text.WHITE);
+        comboBoxInput.get("Цвет").addItem(Text.COLOR);
+        comboBoxInput.get("Цвет").addItem(Text.MATE_WHITE);
+        comboBoxInput.get("Цвет").addItem(Text.MATE_COLOR);
+        comboBoxInput.get("Цвет").addItem(Text.ANTIK);
+        comboBoxInput.get("Цвет").addItem(Text.METALIK);
+        comboBoxInput.get("Цвет").addItem(Text.CHROM);
+        comboBoxInput.get("Цвет").addItem(Text.GOLD);
         comboBoxInput.get("Цвет").setSelectedIndex(0);
 
         comboBoxInput.put("Упаковка", new JComboBox());
@@ -369,7 +370,7 @@ public class ItemsInput {
             textFieldInput.get(key).getDocument().addDocumentListener(new EnterInput());
         }
         for (String key : comboBoxInput.keySet()) {
-            comboBoxInput.get(key).addActionListener(new choiceItems());
+            comboBoxInput.get(key).addActionListener(new ChoiceItems());
         }
     }
 

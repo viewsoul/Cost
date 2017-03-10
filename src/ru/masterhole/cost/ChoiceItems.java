@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 /**
  * Created by hole on 17.11.2016.
  */
-public class choiceItems implements java.awt.event.ActionListener {
+public class ChoiceItems implements java.awt.event.ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String comboBoxKey = "";

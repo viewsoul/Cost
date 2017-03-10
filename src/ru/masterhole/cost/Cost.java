@@ -3,6 +3,10 @@ package ru.masterhole.cost;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Arc2D;
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by hole on 15.11.2016.
@@ -121,4 +125,45 @@ public class Cost {
         cost = (cost/100)*x;
         return cost;
     }
+
+    /**
+     * возвращает сумму наценки в рублях
+     * @param cost стоимость изделия в белом цвете
+     * @param area площадь поверхности покраски
+     */
+    public static double getCostColor(double cost, double area) {
+
+        // хэшкод выбранного цвета в меню
+        int color = ItemsInput.comboBoxInput.get("Цвет").getSelectedItem().hashCode();
+
+        // индекс по умолчанию для белого цвета
+        int indexColor = 0;
+
+        // индекс выбранного цвета
+        for (int i=0; i<Constant.COLOR.length; i++){
+            if (Constant.COLOR[i][0]==color){
+                indexColor = i;
+                i = Constant.COLOR.length;
+            }
+        }
+//        System.out.println("index в массиве: "+indexColor);
+
+        // наценка по умолчанию
+        int procent = 0;
+
+            if (area >= 0 & area <0.5) {
+                procent = Constant.COLOR[indexColor][1];
+            }   else if (area >= 0.5 & area < 1) {
+                procent = Constant.COLOR[indexColor][2];
+            } else if (area >= 1) {
+                procent = Constant.COLOR[indexColor][3];
+            } else {
+                cost = 0;
+                System.err.println("Неверная площадь при расчёте покраски. S="+area);
+            }
+        cost = (cost/100)*procent;
+        return cost;
+    }
+
+
 }

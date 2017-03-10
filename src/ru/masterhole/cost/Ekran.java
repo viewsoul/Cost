@@ -29,6 +29,7 @@ public class Ekran {
         // грунтовка
         cost = cost + Cost.getCostGruntovka(cost);
         //цвет
+        cost = cost + Cost.getCostColor(cost,getS());
 
         // доп работы
         cost = cost + Cost.getCostDoprab(cost);
@@ -40,6 +41,14 @@ public class Ekran {
 
         Cost.setCost(cost);
 
+    }
+
+    /**
+     * @return возвращет площадь открытого экрана в метрах квадратных
+     * необходимо для рассчёта стоимости цвета
+     */
+    private static double getS() {
+        return (getLength()*(getHeight()+getDepth()))/1000000;
     }
 
     private static int getUpor() {
