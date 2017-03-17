@@ -6,89 +6,96 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by hole on 09.11.2016.
+ * Автор: Павел "hole" Фетисов
+ * Дата создания: 09.11.2016.
  */
 public class ItemsInput {
+
+    public static final int WIDTH_ITEMS_DEFAULT     = Panels.WIDTH_PANEL_INPUT - 10;
+    public static final int WIDTH_2X_ITEMS_DEFAULT  = WIDTH_ITEMS_DEFAULT/2 - 8;
+    public static final int HEIGHT_ITEMS_DEFAULT    = 30;
+
+    // заголовки контента
     public static Map<String, JLabel> labelsTitle;
+
+    // названия элементов ввода
     public static Map<String, JLabel> labelsInput;
+
+    // полня ввода
     public static Map<String, JTextField> textFieldInput;
+
+    // списки
     public static Map<String, JComboBox> comboBoxInput;
 
-    public static void loadDefault() {
-        if (labelsTitle == null){
-            labelsTitle = new HashMap<String, JLabel>();
-            System.out.println("Инициализация заголовков панели ввода.");
-        } else { System.out.println("Заголовки панели ввода уже были инициализированы.");}
 
-        // заголовки
-        labelsTitle.put("Экраны", new JLabel("Экраны для батарей"));
-        labelsTitle.put("Решётки перфорированные встраиваемые", new JLabel("Решётки перфорированные встраиваемые"));
-        labelsTitle.put("Решётки перфорированные накладные", new JLabel("Решётки перфорированные накладные"));
-        labelsTitle.put("Решётки перфорированные плоские", new JLabel("Решётки перфорированные плоские"));
-        labelsTitle.put("Решётки перфорированные плоские с подгибом", new JLabel("Решётки перфорированные плоские с подгибом"));
-        labelsTitle.put("Решётки перфорированные выпуклые", new JLabel("Решётки перфорированные выпуклые"));
-        labelsTitle.put("Люки", new JLabel("Люки ревизинные"));
-        labelsTitle.put("Люки встраиваемые", new JLabel("Люки ревизинные встраиваемые"));
-        labelsTitle.put("Люки накладные", new JLabel("Люки ревизинные накладные"));
-        labelsTitle.put("Короба Г", new JLabel("Короба Г-образные"));
-        labelsTitle.put("Короба П", new JLabel("Короба П-образные"));
-        labelsTitle.put("Решётки жалюзийные встраиваемые", new JLabel("Решётки жалюзийные встраиваемые"));
-        labelsTitle.put("Решётки жалюзийные накладные", new JLabel("Решётки жалюзийные накладные"));
-        labelsTitle.put("Люки перфорированные встраиваемые", new JLabel("Люки перфорированные встраиваемые"));
-        labelsTitle.put("Люки перфорированные накладные", new JLabel("Люки перфорированные накладные"));
-        labelsTitle.put("Решётки НЕО2 плоские", new JLabel("Решётки НЕО2 плоские"));
-        labelsTitle.put("Решётки НЕО2 выпуклые", new JLabel("Решётки НЕО2 выпуклые"));
-        labelsTitle.put("Люки жалюзийные встраиваемые", new JLabel("Люки жалюзийные встраиваемые"));
-        labelsTitle.put("Люки жалюзийные накладные", new JLabel("Люки жалюзийные накладные"));
-        labelsTitle.put("Решётки оцинкованные жалюзийные встраиваемые", new JLabel("Решётки оцинкованные жалюзийные встраиваемые"));
-        labelsTitle.put("Решётки оцинкованные жалюзийные накладные", new JLabel("Решётки оцинкованные жалюзийные накладные"));
+    // конструктор
+    public ItemsInput() {
 
-        if (labelsInput == null){
-            labelsInput = new HashMap<String, JLabel>();
-            System.out.println("Инициализация лэйблов панели ввода.");
-        } else { System.out.println("Лэйблы панели ввода уже были инициализированы.");}
+        // инициализация заголовков панели ввода
+        labelsTitle = new HashMap<String, JLabel>();
+        System.out.println("Инициализация заголовков панели ввода.");
 
-        labelsInput.put("Длина", new JLabel("Длина"));
-        labelsInput.put("Высота", new JLabel("Высота"));
-        labelsInput.put("Глубина", new JLabel("Глубина"));
-        labelsInput.put("Высота вторая", new JLabel("Высота"));
-        labelsInput.put("Бок левый", new JLabel("Бок левый"));
-        labelsInput.put("Бок правый", new JLabel("Бок правый"));
-        labelsInput.put("Перфорация", new JLabel("Перфорация"));
-        labelsInput.put("Вырезы", new JLabel("Вырезы"));
-        labelsInput.put("Упоры", new JLabel("Упоры"));
-        labelsInput.put("Грунтовка", new JLabel("Грунтовка"));
-        labelsInput.put("Цвет", new JLabel("Цвет"));
-        labelsInput.put("Дополнительные работы", new JLabel("Дополнительные работы"));
-        labelsInput.put("Упаковка", new JLabel("Упаковка"));
-        labelsInput.put("Наценка", new JLabel("Наценка"));
+        // заполняем список заголовков
+        putLabelsTitle();
+        System.out.println("Загрузка заголовков панели ввода.");
 
-        labelsInput.put("Размер", new JLabel("Размер"));
-        labelsInput.put("Рамка", new JLabel("Рамка"));
-        labelsInput.put("Рамка плиточная", new JLabel("Рамка плиточная"));
-        labelsInput.put("Рамка с подгибом", new JLabel("Рамка с подгибом"));
-        labelsInput.put("Ребро", new JLabel("Ребро"));
-        labelsInput.put("Отверстия", new JLabel("Отверстия"));
-        labelsInput.put("Выпуклость", new JLabel("Выпуклость"));
+        // инициализация подписей элементов ввода и выбора
+        labelsInput = new HashMap<String, JLabel>();
 
-        labelsInput.put("Двухдверный", new JLabel("Двухдверный"));
-        labelsInput.put("Усилитель", new JLabel("Усилитель"));
-        labelsInput.put("Ручка мебельная", new JLabel("Ручка мебельная"));
-        labelsInput.put("Магнит", new JLabel("Магнит"));
-        labelsInput.put("Замок", new JLabel("Замок"));
-        labelsInput.put("Нажимной механизм", new JLabel("Нажимной механизм"));
-        labelsInput.put("Шпингалет", new JLabel("Шпингалет"));
+        // заполнение списка подписей элементов ввода и выбора
+        putLabelsInput();
 
-        labelsInput.put("Уголок", new JLabel("Уголок"));
-        labelsInput.put("Радиус", new JLabel("Радиус"));
+        // инициализация списка выпадающих списков
+        comboBoxInput = new HashMap<String, JComboBox>();
 
+        // заполнение списка выпадающих списков
+        putComboBox();
 
+        // инициализация списка инпутов
+        textFieldInput = new HashMap<String, JTextField>();
 
-        if (comboBoxInput == null){
-            comboBoxInput = new HashMap<String, JComboBox>();
-            System.out.println("Инициализация комбобоксов панели ввода.");
-        } else { System.out.println("Комбобоксы панели ввода уже были инициализированы.");}
+        // заполнение списка элементов ввода
+        putTextField();
+    }
 
+    // загрузка настроек по умолчанию
+    public void loadDefaultSettings() {
+
+        // размеры заголовков
+        setSizeLabelsTitle(WIDTH_ITEMS_DEFAULT,HEIGHT_ITEMS_DEFAULT);
+
+        // размеры подписей элементов ввода и выбора
+        setSizeLabelsInput(WIDTH_2X_ITEMS_DEFAULT,HEIGHT_ITEMS_DEFAULT);
+
+        // шрифт и размер букв у заголовков
+        setFontLabelTitle(new Font(null,Font.BOLD,14));
+
+        // размеры списков выбора
+        setSizeComboBox(WIDTH_2X_ITEMS_DEFAULT,HEIGHT_ITEMS_DEFAULT);
+
+        // размеры полей ввода
+        setSizeTextField(WIDTH_2X_ITEMS_DEFAULT,HEIGHT_ITEMS_DEFAULT);
+
+        // установка слушателей в элементы ввода и выбора
+        setListener();
+
+        // скрыть все элементы
+        setVisible(false);
+    }
+
+    // функция заполнения списка элементов ввода
+    private void putTextField() {
+        textFieldInput.put("Длина", new JTextField());
+        textFieldInput.put("Высота", new JTextField());
+        textFieldInput.put("Глубина", new JTextField());
+        textFieldInput.put("Высота вторая", new JTextField());
+        textFieldInput.put("Выпуклость", new JTextField());
+        textFieldInput.put("Дополнительные работы", new JTextField());
+        textFieldInput.put("Наценка", new JTextField());
+    }
+
+    // функция заполнения список выпадающих списков
+    private void putComboBox() {
         comboBoxInput.put("Размер", new JComboBox());
         comboBoxInput.get("Размер").addItem("Посадочный");
         comboBoxInput.get("Размер").addItem("Габаритый");
@@ -337,146 +344,197 @@ public class ItemsInput {
         comboBoxInput.get("Упаковка").addItem("Стрейч-плёнка");
         comboBoxInput.get("Упаковка").addItem("Гофрокартон");
         comboBoxInput.get("Упаковка").setSelectedIndex(0);
-
-        if (textFieldInput == null){
-            textFieldInput = new HashMap<String, JTextField>();
-        } else { }
-
-        textFieldInput.put("Длина", new JTextField());
-        textFieldInput.put("Высота", new JTextField());
-        textFieldInput.put("Глубина", new JTextField());
-        textFieldInput.put("Высота вторая", new JTextField());
-        textFieldInput.put("Выпуклость", new JTextField());
-        textFieldInput.put("Дополнительные работы", new JTextField());
-        textFieldInput.put("Наценка", new JTextField());
-
-        int width = (int) Panels.panelInput.getPreferredSize().getWidth() - 10;
-//        System.out.println("Ширина заголовков по умолчанию "+width);
-        int width2 = (int) Panels.panelInput.getPreferredSize().getWidth()/2 - 8;
-//        System.out.println("Ширина лэйблов и текстфилдов по умолчанию "+width2);
-        int height = 30;
-        setSizeLabelsTitle(width,height);
-        setSizelLabelsInput(width2,height);
-        setFontLabelTitle(new Font(null,Font.BOLD,14));
-        setSizeComboBox(width2,height);
-        setSizeTextField(width2,height);
-        setListener();
-        addDefault();
-
     }
 
-    private static void setListener() {
+    // функция заполняет список подписей элементов ввода и выбора
+    private void putLabelsInput() {
+        labelsInput.put("Длина", new JLabel("Длина"));
+        labelsInput.put("Высота", new JLabel("Высота"));
+        labelsInput.put("Глубина", new JLabel("Глубина"));
+        labelsInput.put("Высота вторая", new JLabel("Высота"));
+        labelsInput.put("Бок левый", new JLabel("Бок левый"));
+        labelsInput.put("Бок правый", new JLabel("Бок правый"));
+        labelsInput.put("Перфорация", new JLabel("Перфорация"));
+        labelsInput.put("Вырезы", new JLabel("Вырезы"));
+        labelsInput.put("Упоры", new JLabel("Упоры"));
+        labelsInput.put("Грунтовка", new JLabel("Грунтовка"));
+        labelsInput.put("Цвет", new JLabel("Цвет"));
+        labelsInput.put("Дополнительные работы", new JLabel("Дополнительные работы"));
+        labelsInput.put("Упаковка", new JLabel("Упаковка"));
+        labelsInput.put("Наценка", new JLabel("Наценка"));
+
+        labelsInput.put("Размер", new JLabel("Размер"));
+        labelsInput.put("Рамка", new JLabel("Рамка"));
+        labelsInput.put("Рамка плиточная", new JLabel("Рамка плиточная"));
+        labelsInput.put("Рамка с подгибом", new JLabel("Рамка с подгибом"));
+        labelsInput.put("Ребро", new JLabel("Ребро"));
+        labelsInput.put("Отверстия", new JLabel("Отверстия"));
+        labelsInput.put("Выпуклость", new JLabel("Выпуклость"));
+
+        labelsInput.put("Двухдверный", new JLabel("Двухдверный"));
+        labelsInput.put("Усилитель", new JLabel("Усилитель"));
+        labelsInput.put("Ручка мебельная", new JLabel("Ручка мебельная"));
+        labelsInput.put("Магнит", new JLabel("Магнит"));
+        labelsInput.put("Замок", new JLabel("Замок"));
+        labelsInput.put("Нажимной механизм", new JLabel("Нажимной механизм"));
+        labelsInput.put("Шпингалет", new JLabel("Шпингалет"));
+
+        labelsInput.put("Уголок", new JLabel("Уголок"));
+        labelsInput.put("Радиус", new JLabel("Радиус"));
+    }
+
+    // функция заполняет список заголовков панели ввода
+    private void putLabelsTitle() {
+        // заголовки
+        labelsTitle.put("Экраны", new JLabel("Экраны для батарей"));
+        labelsTitle.put("Решётки перфорированные встраиваемые", new JLabel("Решётки перфорированные встраиваемые"));
+        labelsTitle.put("Решётки перфорированные накладные", new JLabel("Решётки перфорированные накладные"));
+        labelsTitle.put("Решётки перфорированные плоские", new JLabel("Решётки перфорированные плоские"));
+        labelsTitle.put("Решётки перфорированные плоские с подгибом", new JLabel("Решётки перфорированные плоские с подгибом"));
+        labelsTitle.put("Решётки перфорированные выпуклые", new JLabel("Решётки перфорированные выпуклые"));
+        labelsTitle.put("Люки", new JLabel("Люки ревизинные"));
+        labelsTitle.put("Люки встраиваемые", new JLabel("Люки ревизинные встраиваемые"));
+        labelsTitle.put("Люки накладные", new JLabel("Люки ревизинные накладные"));
+        labelsTitle.put("Короба Г", new JLabel("Короба Г-образные"));
+        labelsTitle.put("Короба П", new JLabel("Короба П-образные"));
+        labelsTitle.put("Решётки жалюзийные встраиваемые", new JLabel("Решётки жалюзийные встраиваемые"));
+        labelsTitle.put("Решётки жалюзийные накладные", new JLabel("Решётки жалюзийные накладные"));
+        labelsTitle.put("Люки перфорированные встраиваемые", new JLabel("Люки перфорированные встраиваемые"));
+        labelsTitle.put("Люки перфорированные накладные", new JLabel("Люки перфорированные накладные"));
+        labelsTitle.put("Решётки НЕО2 плоские", new JLabel("Решётки НЕО2 плоские"));
+        labelsTitle.put("Решётки НЕО2 выпуклые", new JLabel("Решётки НЕО2 выпуклые"));
+        labelsTitle.put("Люки жалюзийные встраиваемые", new JLabel("Люки жалюзийные встраиваемые"));
+        labelsTitle.put("Люки жалюзийные накладные", new JLabel("Люки жалюзийные накладные"));
+        labelsTitle.put("Решётки оцинкованные жалюзийные встраиваемые", new JLabel("Решётки оцинкованные жалюзийные встраиваемые"));
+        labelsTitle.put("Решётки оцинкованные жалюзийные накладные", new JLabel("Решётки оцинкованные жалюзийные накладные"));
+    }
+
+    // функция устанавливает слушателей для полей и списков
+    private void setListener() {
+
+        // слушатели для полей ввода
         for (String key : textFieldInput.keySet()){
             textFieldInput.get(key).getDocument().addDocumentListener(new EnterInput());
         }
+
+        // слушатели для списоков выбора
         for (String key : comboBoxInput.keySet()) {
             comboBoxInput.get(key).addActionListener(new ChoiceItems());
         }
     }
 
-    private static void setFontLabelTitle(Font font) {
+    // функция устанавливает шрифт для заголовков
+    private void setFontLabelTitle(Font font) {
         for (String key : labelsTitle.keySet()){
             labelsTitle.get(key).setFont(font);
         }
     }
 
-    private static void setSizeTextField(int width, int height) {
+    // функция устанавливает размеры полей ввода
+    private void setSizeTextField(int width, int height) {
         Dimension size = new Dimension(width,height);
         for (String key : textFieldInput.keySet()){
             textFieldInput.get(key).setPreferredSize(size);
         }
     }
 
-    private static void setSizeComboBox(int width, int height) {
+    // функция устанавливает размер списков выбора
+    private void setSizeComboBox(int width, int height) {
         Dimension size = new Dimension(width,height);
         for (String key : comboBoxInput.keySet()){
             comboBoxInput.get(key).setPreferredSize(size);
         }
     }
 
-    private static void setSizelLabelsInput(int width, int height) {
+    // функция устанавливает размеры подписей элементов ввода и выбора
+    private void setSizeLabelsInput(int width, int height) {
         Dimension size = new Dimension(width,height);
         for (String key : labelsInput.keySet()){
             labelsInput.get(key).setPreferredSize(size);
         }
     }
 
-    private static void setSizeLabelsTitle(int width, int height) {
+    // функция устанавливает размеры заголовков
+    private void setSizeLabelsTitle(int width, int height) {
         Dimension size = new Dimension(width,height);
         for (String key : labelsTitle.keySet()){
             labelsTitle.get(key).setPreferredSize(size);
         }
     }
 
-    private static void addDefault() {
-        for (String key : labelsTitle.keySet()){
-            Panels.panelInput.add(labelsTitle.get(key));
-        }
-        Panels.panelInput.add(labelsInput.get("Размер"));
-        Panels.panelInput.add(comboBoxInput.get("Размер"));
-        Panels.panelInput.add(labelsInput.get("Длина"));
-        Panels.panelInput.add(textFieldInput.get("Длина"));
-        Panels.panelInput.add(labelsInput.get("Высота"));
-        Panels.panelInput.add(textFieldInput.get("Высота"));
-        Panels.panelInput.add(labelsInput.get("Глубина"));
-        Panels.panelInput.add(textFieldInput.get("Глубина"));
-        Panels.panelInput.add(labelsInput.get("Высота вторая"));
-        Panels.panelInput.add(textFieldInput.get("Высота вторая"));
-        Panels.panelInput.add(labelsInput.get("Выпуклость"));
-        Panels.panelInput.add(textFieldInput.get("Выпуклость"));
-        Panels.panelInput.add(labelsInput.get("Рамка"));
-        Panels.panelInput.add(comboBoxInput.get("Рамка"));
-        Panels.panelInput.add(comboBoxInput.get("Рамка от жалюзийной встраиваемой"));
-        Panels.panelInput.add(labelsInput.get("Рамка с подгибом"));
-        Panels.panelInput.add(comboBoxInput.get("Рамка с подгибом"));
-        Panels.panelInput.add(labelsInput.get("Рамка плиточная"));
-        Panels.panelInput.add(comboBoxInput.get("Рамка плиточная"));
-        Panels.panelInput.add(labelsInput.get("Ребро"));
-        Panels.panelInput.add(comboBoxInput.get("Ребро"));
-        Panels.panelInput.add(labelsInput.get("Двухдверный"));
-        Panels.panelInput.add(comboBoxInput.get("Двухдверный"));
-        Panels.panelInput.add(labelsInput.get("Усилитель"));
-        Panels.panelInput.add(comboBoxInput.get("Усилитель"));
-        Panels.panelInput.add(labelsInput.get("Бок левый"));
-        Panels.panelInput.add(comboBoxInput.get("Бок левый"));
-        Panels.panelInput.add(labelsInput.get("Бок правый"));
-        Panels.panelInput.add(comboBoxInput.get("Бок правый"));
-        Panels.panelInput.add(labelsInput.get("Перфорация"));
-        Panels.panelInput.add(comboBoxInput.get("Перфорация"));
-        Panels.panelInput.add(labelsInput.get("Уголок"));
-        Panels.panelInput.add(comboBoxInput.get("Уголок"));
-        Panels.panelInput.add(labelsInput.get("Радиус"));
-        Panels.panelInput.add(comboBoxInput.get("Радиус"));
-        Panels.panelInput.add(labelsInput.get("Вырезы"));
-        Panels.panelInput.add(comboBoxInput.get("Вырезы"));
-        Panels.panelInput.add(labelsInput.get("Отверстия"));
-        Panels.panelInput.add(comboBoxInput.get("Отверстия"));
-        Panels.panelInput.add(labelsInput.get("Магнит"));
-        Panels.panelInput.add(comboBoxInput.get("Магнит"));
-        Panels.panelInput.add(labelsInput.get("Ручка мебельная"));
-        Panels.panelInput.add(comboBoxInput.get("Ручка мебельная"));
-        Panels.panelInput.add(labelsInput.get("Замок"));
-        Panels.panelInput.add(comboBoxInput.get("Замок"));
-        Panels.panelInput.add(labelsInput.get("Нажимной механизм"));
-        Panels.panelInput.add(comboBoxInput.get("Нажимной механизм"));
-        Panels.panelInput.add(labelsInput.get("Шпингалет"));
-        Panels.panelInput.add(comboBoxInput.get("Шпингалет"));
-        Panels.panelInput.add(labelsInput.get("Упоры"));
-        Panels.panelInput.add(comboBoxInput.get("Упоры"));
-        Panels.panelInput.add(labelsInput.get("Грунтовка"));
-        Panels.panelInput.add(comboBoxInput.get("Грунтовка"));
-        Panels.panelInput.add(labelsInput.get("Цвет"));
-        Panels.panelInput.add(comboBoxInput.get("Цвет"));
-        Panels.panelInput.add(labelsInput.get("Дополнительные работы"));
-        Panels.panelInput.add(textFieldInput.get("Дополнительные работы"));
-        Panels.panelInput.add(labelsInput.get("Упаковка"));
-        Panels.panelInput.add(comboBoxInput.get("Упаковка"));
-        Panels.panelInput.add(labelsInput.get("Наценка"));
-        Panels.panelInput.add(textFieldInput.get("Наценка"));
+    // функция добавляет элементы на панель
+    public void addItemsToPanel(JPanel panel) {
 
-        Window.frame.pack();
+        // заголовки
+        for (String key : labelsTitle.keySet()){
+            panel.add(labelsTitle.get(key));
+        }
+
+        // подписи и элементы ввода и выбора
+        panel.add(labelsInput.get("Размер"));
+        panel.add(comboBoxInput.get("Размер"));
+        panel.add(labelsInput.get("Длина"));
+        panel.add(textFieldInput.get("Длина"));
+        panel.add(labelsInput.get("Высота"));
+        panel.add(textFieldInput.get("Высота"));
+        panel.add(labelsInput.get("Глубина"));
+        panel.add(textFieldInput.get("Глубина"));
+        panel.add(labelsInput.get("Высота вторая"));
+        panel.add(textFieldInput.get("Высота вторая"));
+        panel.add(labelsInput.get("Выпуклость"));
+        panel.add(textFieldInput.get("Выпуклость"));
+        panel.add(labelsInput.get("Рамка"));
+        panel.add(comboBoxInput.get("Рамка"));
+        panel.add(comboBoxInput.get("Рамка от жалюзийной встраиваемой"));
+        panel.add(labelsInput.get("Рамка с подгибом"));
+        panel.add(comboBoxInput.get("Рамка с подгибом"));
+        panel.add(labelsInput.get("Рамка плиточная"));
+        panel.add(comboBoxInput.get("Рамка плиточная"));
+        panel.add(labelsInput.get("Ребро"));
+        panel.add(comboBoxInput.get("Ребро"));
+        panel.add(labelsInput.get("Двухдверный"));
+        panel.add(comboBoxInput.get("Двухдверный"));
+        panel.add(labelsInput.get("Усилитель"));
+        panel.add(comboBoxInput.get("Усилитель"));
+        panel.add(labelsInput.get("Бок левый"));
+        panel.add(comboBoxInput.get("Бок левый"));
+        panel.add(labelsInput.get("Бок правый"));
+        panel.add(comboBoxInput.get("Бок правый"));
+        panel.add(labelsInput.get("Перфорация"));
+        panel.add(comboBoxInput.get("Перфорация"));
+        panel.add(labelsInput.get("Уголок"));
+        panel.add(comboBoxInput.get("Уголок"));
+        panel.add(labelsInput.get("Радиус"));
+        panel.add(comboBoxInput.get("Радиус"));
+        panel.add(labelsInput.get("Вырезы"));
+        panel.add(comboBoxInput.get("Вырезы"));
+        panel.add(labelsInput.get("Отверстия"));
+        panel.add(comboBoxInput.get("Отверстия"));
+        panel.add(labelsInput.get("Магнит"));
+        panel.add(comboBoxInput.get("Магнит"));
+        panel.add(labelsInput.get("Ручка мебельная"));
+        panel.add(comboBoxInput.get("Ручка мебельная"));
+        panel.add(labelsInput.get("Замок"));
+        panel.add(comboBoxInput.get("Замок"));
+        panel.add(labelsInput.get("Нажимной механизм"));
+        panel.add(comboBoxInput.get("Нажимной механизм"));
+        panel.add(labelsInput.get("Шпингалет"));
+        panel.add(comboBoxInput.get("Шпингалет"));
+        panel.add(labelsInput.get("Упоры"));
+        panel.add(comboBoxInput.get("Упоры"));
+        panel.add(labelsInput.get("Грунтовка"));
+        panel.add(comboBoxInput.get("Грунтовка"));
+        panel.add(labelsInput.get("Цвет"));
+        panel.add(comboBoxInput.get("Цвет"));
+        panel.add(labelsInput.get("Дополнительные работы"));
+        panel.add(textFieldInput.get("Дополнительные работы"));
+        panel.add(labelsInput.get("Упаковка"));
+        panel.add(comboBoxInput.get("Упаковка"));
+        panel.add(labelsInput.get("Наценка"));
+        panel.add(textFieldInput.get("Наценка"));
     }
 
+    // функция отвечает за отображение всех элементов панели ввода
     public static void setVisible(boolean b) {
         for (String key : labelsTitle.keySet()){
             labelsTitle.get(key).setVisible(b);
@@ -492,8 +550,10 @@ public class ItemsInput {
         }
     }
 
+    // функция отображает только элементы для расчёта экранов
     public static void setVisibleEkran() {
-        // клик по кнопке экраны
+
+        // скрыть все элементы
         setVisible(false);
 
         labelsTitle.get("Экраны").setVisible(true);
@@ -538,8 +598,10 @@ public class ItemsInput {
         textFieldInput.get("Наценка").setVisible(true);
     }
 
+    // функция отображает только элементы для расчёта решёток перфорированных встраиваемых
     public static void setVisibleReshetkiPerfoVr() {
-        // клик по кнопке решётки перфорированные встраиваемые
+
+        // скрыть все элементы
         setVisible(false);
 
         labelsTitle.get("Решётки перфорированные встраиваемые").setVisible(true);
@@ -586,8 +648,10 @@ public class ItemsInput {
         textFieldInput.get("Наценка").setVisible(true);
     }
 
+    // функция отображает только элементы для расчёта решёток перфорированных накладных
     public static void setVisibleReshetkiPerfoNakl() {
-        // клик по кнопке решётки перфорированные накладные
+
+        // скрыть все элементы
         setVisible(false);
 
         labelsTitle.get("Решётки перфорированные накладные").setVisible(true);
@@ -631,8 +695,10 @@ public class ItemsInput {
         textFieldInput.get("Наценка").setVisible(true);
     }
 
+    // функция отображает только элементы для расчёта решёток перфорированных плоских
     public static void setVisibleReshetkiPerfoPl() {
-        // клик по кнопке решётки перфорированные плоские
+
+        // скрыть все элементы
         setVisible(false);
 
         labelsTitle.get("Решётки перфорированные плоские").setVisible(true);
@@ -672,8 +738,10 @@ public class ItemsInput {
         textFieldInput.get("Наценка").setVisible(true);
     }
 
+    // функция отображает только элементы для расчёта решёток перфорированных плоских с подгибом рамки
     public static void setVisibleReshetkiPerfoPlspod() {
-        // клик по кнопке решётки перфорированные плоские с подгибом
+
+        // скрыть все элементы
         setVisible(false);
 
         labelsTitle.get("Решётки перфорированные плоские с подгибом").setVisible(true);
@@ -713,8 +781,10 @@ public class ItemsInput {
         textFieldInput.get("Наценка").setVisible(true);
     }
 
+    // функция отображает только элементы для расчёта решёток перфорированных выпуклых
     public static void setVisibleReshetkiPerfoVipukl() {
-        // клик по кнопке решётки перфорированные выпуклые
+
+        // скрыть все элементы
         setVisible(false);
 
         labelsTitle.get("Решётки перфорированные выпуклые").setVisible(true);
@@ -764,8 +834,10 @@ public class ItemsInput {
         textFieldInput.get("Наценка").setVisible(true);
     }
 
+    // функция отображает только элементы для расчёта люков встраиваемых
     public static void setVisibleHatchVr() {
-        // клик по кнопке люки встраиваемые
+
+        // скрыть все элементы
         setVisible(false);
 
         labelsTitle.get("Люки встраиваемые").setVisible(true);
@@ -834,8 +906,10 @@ public class ItemsInput {
 
     }
 
+    // функция отображает только элементы для расчёта люков накладных
     public static void setVisibleHatchNakl() {
-        // клик по кнопке люки накладные
+
+        // скрыть все элементы
         setVisible(false);
 
         labelsTitle.get("Люки накладные").setVisible(true);
@@ -892,8 +966,10 @@ public class ItemsInput {
         textFieldInput.get("Наценка").setVisible(true);
     }
 
+    // функция отображает только элементы для расчёта коробов Г-образных
     public static void setVisibleKorobG() {
-        // клик по кнопке короба Г-образные
+
+        // скрыть все элементы
         setVisible(false);
 
         labelsTitle.get("Короба Г").setVisible(true);
@@ -944,8 +1020,10 @@ public class ItemsInput {
         textFieldInput.get("Наценка").setVisible(true);
     }
 
+    // функция отображает только элементы для расчёта коробов П-образных
     public static void setVisibleKorobP() {
-        // клик по кнопке короба П-образные
+
+        // скрыть все элементы
         setVisible(false);
 
         labelsTitle.get("Короба П").setVisible(true);
@@ -999,8 +1077,10 @@ public class ItemsInput {
         textFieldInput.get("Наценка").setVisible(true);
     }
 
+    // функция отображает только элементы для расчёта решёток жалюзийных встраиваемых
     public static void setVisibleReshetkiZaluzVr() {
-        // клик по кнопке решётки жалюзийные встраиваемые
+
+        // скрыть все элементы
         setVisible(false);
 
         labelsTitle.get("Решётки жалюзийные встраиваемые").setVisible(true);
@@ -1048,8 +1128,10 @@ public class ItemsInput {
         textFieldInput.get("Наценка").setVisible(true);
     }
 
+    // функция отображает только элементы для расчёта решёток жалюзийных накладных
     public static void setVisibleReshetkiZaluzNakl() {
-        // клик по кнопке решётки жалюзийные накладные
+
+        // скрыть все элементы
         setVisible(false);
 
         labelsTitle.get("Решётки жалюзийные накладные").setVisible(true);
@@ -1088,5 +1170,13 @@ public class ItemsInput {
 
         labelsInput.get("Наценка").setVisible(true);
         textFieldInput.get("Наценка").setVisible(true);
+    }
+
+    public static void setVisibleHatchPerfoVr() {
+
+    }
+
+    public static void setVisibleHatchPerfoNakl() {
+
     }
 }

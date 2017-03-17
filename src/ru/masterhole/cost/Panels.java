@@ -1,60 +1,105 @@
 package ru.masterhole.cost;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 
 /**
- * Created by viewsoul on 09.11.2016.
+ * Автор: Павел "viewsoul" Фетисов
+ * Дата создания: 09.11.2016.
  */
 public class Panels {
 
+    // размер панели меню
+    public static final int WIDTH_PANEL_MENU = 240;
+    public static final int WIDTH_PANEL_INPUT = 480;
+
+    // панели меню, ввода и вывода данных
     public static JPanel panelMenu;
     public static JPanel panelInput;
-    public static JScrollPane panelInputScroll;
     public static JPanel panelOutput;
 
-    public static void loadDefault() {
-        if(panelMenu == null){
-            panelMenu = new JPanel(new FlowLayout());
-            // System.out.println("Инициализация панели меню.");
-        } else { System.out.println("Панель меню уже была инициализирована.");}
+    // скролл для панели ввода данных
+    public static JScrollPane panelInputScroll;
 
-        if(panelInput == null){
-            panelInput = new JPanel(new FlowLayout());
-        } else { System.out.println("Панель ввода уже была инициализирована.");}
+    // панель коробка для панели ввода со скролом и панели вывода
+    public static JPanel boxInOut;
 
-        if (panelInputScroll == null){
-            panelInputScroll = new JScrollPane(panelInput);
-        }
+    // конструктор панелей
+    public Panels() {
 
+        // инициализация панелей
+        panelMenu = new JPanel();
+        panelInput = new JPanel();
+        panelOutput = new JPanel();
+//        System.out.println("Инициализация панелей.");
+
+        // скролл для панели ввода
+        panelInputScroll = new JScrollPane(panelInput);
+
+        // панель-корбка для панелей ввода вывода
+        boxInOut = new JPanel();
+    }
+
+    // функция загрузки настроек панелей
+    public void loadDefaultSettings() {
+
+        // схема компановки элементов
+        panelMenu.setLayout(new FlowLayout());
+        panelInput.setLayout(new FlowLayout());
+        panelOutput.setLayout(new FlowLayout());
+
+        // скролл только по вертикали
         panelInputScroll.setHorizontalScrollBarPolicy(panelInputScroll.HORIZONTAL_SCROLLBAR_NEVER);
 
-        if(panelOutput == null){
-            panelOutput = new JPanel(new FlowLayout());
-        } else { System.out.println("Панель вывода уже была инициализирована.");}
+        // компановка в коробке для панелей ввода вывода
+        boxInOut.setLayout(new BorderLayout());
 
-        int width = Window.frame.getWidth();
+        // установка размеров панелей
+        setSize(MainFrame.WIDTH_DEFAULT, WIDTH_PANEL_MENU,WIDTH_PANEL_INPUT);
 
-        Dimension sizeMenu = new Dimension(width/4,-1);
-        Dimension sizeInput = new Dimension(width/2-40,-1);
-        Dimension sizeOutput = new Dimension(width/4,-1);
+        // установка фона панелей
+        setColorDefault();
+    }
 
-        panelMenu.setMinimumSize(sizeMenu);
-        panelMenu.setPreferredSize(sizeMenu);
+    // функция установки цвета фона
+    private void setColorDefault() {
         panelMenu.setBackground(Color.WHITE);
-
-        panelInput.setPreferredSize(sizeInput);
-        panelInput.setBackground(Color.WHITE);
-
-        panelOutput.setMinimumSize(sizeOutput);
-        panelOutput.setPreferredSize(sizeOutput);
+        panelInput.setBackground(Color.GRAY);
         panelOutput.setBackground(Color.DARK_GRAY);
+    }
 
-        Window.frame.add(panelMenu,BorderLayout.WEST);
-        Window.frame.add(panelInputScroll,BorderLayout.CENTER);
-        Window.frame.add(panelOutput,BorderLayout.EAST);
+    // функция установки размеров панелей
+    public void setSize(int width, int widthMenu, int widthPanelInput) {
 
-        Window.frame.pack();
+        // размеры панели меню
+        panelMenu.setMinimumSize(new Dimension(widthMenu,-1));
+        panelMenu.setPreferredSize(new Dimension(widthMenu,-1));
+        System.out.println("Ширина панели меню "+widthMenu);
+
+        // размеры панели ввода данных
+        panelInput.setPreferredSize(new Dimension(widthPanelInput,-1));
+        System.out.println("Ширина панели ввода "+widthPanelInput);
+
+        // размеры панели вывода данных
+        panelOutput.setMinimumSize(new Dimension(width-widthMenu-widthPanelInput-40,-1));
+        panelOutput.setPreferredSize(new Dimension(width-widthMenu-widthPanelInput-40,-1));
+        System.out.println("Ширина панели вывода "+(width-widthMenu-widthPanelInput-40));
+    }
+
+    // функция добавления панелей на главный фрейм
+    public void addToFrame(JFrame frame) {
+
+        // добавляем панель меню на главный фрейм
+        frame.add(panelMenu, BorderLayout.WEST);
+
+        // добавляем коробку из панелей ввода и вывода на главный фрейм
+        frame.add(boxInOut, BorderLayout.CENTER);
+
+        // добавляем в панели коробки панели ввода и вывода
+        boxInOut.add(panelInputScroll, BorderLayout.WEST);
+        boxInOut.add(panelOutput, BorderLayout.CENTER);
+
+        // оптимизируем расположение
+//        frame.pack();
     }
 }

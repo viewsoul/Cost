@@ -1,7 +1,8 @@
 package ru.masterhole.cost;
 
 /**
- * Created by hole on 15.11.2016.
+ * Автор: Павел "hole" Фетисов
+ * Дата создания: 15.11.2016.
  */
 public class Ekran {
 
@@ -9,11 +10,13 @@ public class Ekran {
 
         int H = getHeight();
         int B = getDepth();
+        int L = getLength();
         int perfo = getPerfo();
-
         double cost;
-        cost = makeCost(getLength(), H, perfo);
+
+        cost = makeCost(L, H, perfo);
         cost = cost + getCostSides(getLeft(),getRight(),H,perfo);
+
         if (B > 200 & B <= 250 ){
             double x =  cost*0.2;
             cost = cost + x;
@@ -22,15 +25,15 @@ public class Ekran {
             cost = 0;
             System.out.println("Предел глубины 250");
         }
+
         // вырезы
         cost = cost + Cost.getCostVirez()*getVirez();
         // Упоры
         cost = cost + Cost.getCostUpor()*getUpor();
         // грунтовка
         cost = cost + Cost.getCostGruntovka(cost);
-        //цвет
+        // цвет
         cost = cost + Cost.getCostColor(cost,getS());
-
         // доп работы
         cost = cost + Cost.getCostDoprab(cost);
 
@@ -40,7 +43,6 @@ public class Ekran {
         cost = cost + Cost.getCostNacenka(cost);
 
         Cost.setCost(cost);
-
     }
 
     /**
@@ -64,9 +66,7 @@ public class Ekran {
     }
 
     private static int getPerfo() {
-        int perfo;
-        perfo = ItemsInput.comboBoxInput.get("Перфорация").getSelectedIndex();
-        return perfo;
+        return ItemsInput.comboBoxInput.get("Перфорация").getSelectedIndex();
     }
 
     private static int getDepth() {
@@ -112,10 +112,9 @@ public class Ekran {
     }
 
     private static double makeCost(double L, double H, int perfo) {
-        double Lm;
+        // длина в метрах
+        double Lm = L/1000;
         double cost = 0;
-
-        Lm = L / 1000;
 
         if (H<=0) {
             cost = 0;

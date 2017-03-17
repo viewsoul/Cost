@@ -13,16 +13,12 @@ import java.util.Map;
  */
 public class Cost {
 
-    public static int costVirez = 120;
-    public static int costUpor = 50;
-    public static int procentGruntovka = 10;
+    static void update() {
 
-    private static String labelsTitleKey;
-
-    public static void update() {
+        String labelsTitleKey = "";
 
         for (String key : ItemsInput.labelsTitle.keySet()){
-            if (ItemsInput.labelsTitle.get(key).isVisible() == true){
+            if (ItemsInput.labelsTitle.get(key).isVisible()){
                 labelsTitleKey = key;
                 break;
             }
@@ -86,22 +82,22 @@ public class Cost {
         });
     }
 
-    public static double getCostGruntovka(double cost){
+    static double getCostGruntovka(double cost){
         double x;
         if (ItemsInput.comboBoxInput.get("Грунтовка").getSelectedIndex() == 1) {
-            x = (cost/100)*procentGruntovka;
+            x = (cost/100)*Constant.GRUNT;
         } else {
             x = 0;
         }
         return x;
     }
 
-    public static int getCostVirez() {
-        return costVirez;
+    static int getCostVirez() {
+        return Constant.VIREZ;
     }
 
-    public static int getCostUpor() {
-        return costUpor;
+    static int getCostUpor() {
+        return Constant.UPOR;
     }
 
     public static double getCostDoprab(double cost) {
@@ -115,7 +111,12 @@ public class Cost {
         return cost;
     }
 
-    public static double getCostNacenka(double cost) {
+    /**
+     *  Возвращает сумму наценки в рублях.
+     * @param cost стоимость без наценки.
+     */
+    static double getCostNacenka(double cost) {
+        // процент наценки
         double x;
         try {
             x = Double.parseDouble(ItemsInput.textFieldInput.get("Наценка").getText());
@@ -131,7 +132,7 @@ public class Cost {
      * @param cost стоимость изделия в белом цвете
      * @param area площадь поверхности покраски
      */
-    public static double getCostColor(double cost, double area) {
+    static double getCostColor(double cost, double area) {
 
         // хэшкод выбранного цвета в меню
         int color = ItemsInput.comboBoxInput.get("Цвет").getSelectedItem().hashCode();

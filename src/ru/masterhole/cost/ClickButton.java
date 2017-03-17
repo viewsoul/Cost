@@ -11,8 +11,10 @@ public class ClickButton implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-
+        // ключ в списке кнопок
         String buttonKey = "";
+
+        // ищем ключ для нжатой кнопке
         for (String key : ItemsMenu.buttonsMenu.keySet()){
             if (ItemsMenu.buttonsMenu.get(key).hashCode() == e.getSource().hashCode()) {
                 buttonKey = key;
@@ -20,11 +22,10 @@ public class ClickButton implements ActionListener {
             }
         }
 
-        // устанавливаем высоту панели, чтобы скрол поумолчанию исчез
-        Panels.panelInput.setPreferredSize(new Dimension(Panels.panelInput.getWidth()-40,-1));
         // устанавливаем скрол на самый верх
         Panels.panelInputScroll.getVerticalScrollBar().setValue(0);
 
+        // переключаемся по ключу и выполняем действие
         switch (buttonKey) {
             case "Экраны":
                 ItemsInput.setVisibleEkran();
@@ -47,29 +48,24 @@ public class ClickButton implements ActionListener {
                 break;
             case "Решётки перфорированные выпуклые":
                 ItemsInput.setVisibleReshetkiPerfoVipukl();
-                Panels.panelInput.setPreferredSize(new Dimension(Panels.panelInput.getWidth()-40,505));
                 break;
             case "Люки":
                 ItemsMenu.setVisibleHatch();
                 break;
             case "Люки встраиваемые":
                 ItemsInput.setVisibleHatchVr();
-                Panels.panelInput.setPreferredSize(new Dimension(Panels.panelInput.getWidth()-40,680));
                 break;
             case "Люки накладные":
                 ItemsInput.setVisibleHatchNakl();
-                Panels.panelInput.setPreferredSize(new Dimension(Panels.panelInput.getWidth()-40,575));
                 break;
             case "Короба":
                 ItemsMenu.setVisibleKorob();
                 break;
             case "Короба Г":
                 ItemsInput.setVisibleKorobG();
-                Panels.panelInput.setPreferredSize(new Dimension(Panels.panelInput.getWidth()-40,540));
                 break;
             case "Короба П":
                 ItemsInput.setVisibleKorobP();
-                Panels.panelInput.setPreferredSize(new Dimension(Panels.panelInput.getWidth()-40,575));
                 break;
             case "Решётки жалюзийные":
                 ItemsMenu.setVisibleReshetkiZaluz();
@@ -80,9 +76,18 @@ public class ClickButton implements ActionListener {
             case "Решётки жалюзийные накладные":
                 ItemsInput.setVisibleReshetkiZaluzNakl();
                 break;
-
-
+            case "Люки перфорированные":
+                ItemsMenu.setVisibleHatchPerfo();
+                break;
+            case "Люки перфорированные встраиваемые":
+                ItemsInput.setVisibleHatchPerfoVr();
+                break;
+            case "Люки перфорированные накладные":
+                ItemsInput.setVisibleHatchPerfoNakl();
+                break;
+            case "":
+                System.out.println("Ключ кнопки не найден.");
+                break;
         }
-
     }
 }
