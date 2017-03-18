@@ -11,21 +11,19 @@ public class Main {
         // инициализация главного фрейма
         MainFrame mainFrame = new MainFrame();
         // загрузка настроек главного фрейма
-        mainFrame.loadDefaultSettings();
+        mainFrame.settingsDefault();
 
         // инициализация трёх панелей
         Panels panels = new Panels();
         // загрузка настроек трёх панелей
         panels.loadDefaultSettings();
         // добавление трёх панелей на главный фрейм
-        panels.addToFrame(MainFrame.frame);
+        panels.add(MainFrame.frame);
 
-        // инициализация элементов меню
-        ItemsMenu itemsMenu = new ItemsMenu();
-        // загрузка настроек элементов меню
-        itemsMenu.loadDefaultSettings();
-        // добавление элементов меню на панель меню
-        itemsMenu.addItemsToPanel(Panels.panelMenu);
+        // инициализация кнопок для панели меню
+        ButtonsController controllerMenu = new ButtonsController();
+        // добавление кнопок на панель меню
+        controllerMenu.add(Panels.panelMenu);
 
         // инициализация элементов ввода для панели ввода
         ItemsInput itemsInput = new ItemsInput();
@@ -38,6 +36,5 @@ public class Main {
 
         ItemsOutput itemsOutput = new ItemsOutput();
         itemsOutput.loadDefault();
-
     }
 }

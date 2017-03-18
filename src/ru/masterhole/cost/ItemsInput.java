@@ -11,8 +11,8 @@ import java.util.Map;
  */
 public class ItemsInput {
 
-    public static final int WIDTH_ITEMS_DEFAULT     = Panels.WIDTH_PANEL_INPUT - 10;
-    public static final int WIDTH_2X_ITEMS_DEFAULT  = WIDTH_ITEMS_DEFAULT/2 - 8;
+    public static final int WIDTH_ITEMS_DEFAULT     = Panels.WIDTH_PANEL_INPUT - 10 - 40;
+    public static final int WIDTH_2X_ITEMS_DEFAULT  = WIDTH_ITEMS_DEFAULT/2 - 8 - 20;
     public static final int HEIGHT_ITEMS_DEFAULT    = 30;
 
     // заголовки контента

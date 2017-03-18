@@ -10,17 +10,17 @@ import java.awt.*;
 
 public class MainFrame {
 
-    public static final int WIDTH_DEFAULT   = 1000;
-    public static final int HEIGHT_DEFAULT  = 600;
-    public static JFrame frame;
+    static int WIDTH_DEFAULT   = 1000;
+    static int HEIGHT_DEFAULT  = 600;
+    static JFrame frame;
 
     // конструктор окна
-    public MainFrame() throws HeadlessException {
+    MainFrame() {
         // инициализация фрейма
         frame = new JFrame();
     }
 
-    public void loadDefaultSettings() {
+    void settingsDefault() {
         // установка заголовка окна
         frame.setTitle("Прайс-лист");
 
@@ -45,6 +45,6 @@ public class MainFrame {
         frame.setSize(size);
         frame.setMinimumSize(size);
         frame.setPreferredSize(size);
-        frame.setMaximumSize(size);
+//        frame.setMaximumSize(size);
     }
 }
